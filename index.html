@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0D0C0A">
+<title>Mike's Taxi Nassau</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Mike's Taxi Service. Private airport pickups, resort transfers and island tours in Nassau and Paradise Island. Open 24 hours. Call or WhatsApp 242-535-4978.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,600;0,6..96,800;1,6..96,600;1,6..96,800&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap">
+<style>
+/* Layout: a chauffeur's page in Mike's own black and gold. The hero pairs his Yukon on the tarmac with an arrivals board that shows the one thing his reviews keep praising: flight late, Mike still waiting. Single dark theme on purpose, to match his brand. */
+:root{
+  --night:#0D0C0A;      /* warm black ground */
+  --panel:#16140F;
+  --raise:#201D16;
+  --line:rgba(242,232,208,.13);
+  --ink:#F2EDE2;        /* cream text */
+  --muted:#A9A190;
+  --gold:#D6A73E;       /* brand gold */
+  --gold-hi:#F0D488;
+  --board:#0A0A09;
+  --go:#7FD49A;
+  --display:'Bodoni Moda','Didot','Bodoni 72',Georgia,serif;
+  --body:'Hanken Grotesk','Segoe UI',Helvetica,Arial,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--night);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--night)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{max-width:1160px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{padding-block:clamp(56px,8vw,96px)}
+.eyebrow{font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.h2{font-family:var(--display);font-weight:800;font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-.01em;text-wrap:balance;margin:10px 0 0}
+.h2 em{font-style:italic;color:var(--gold-hi)}
+.sub{color:var(--muted);max-width:60ch;margin:14px 0 0}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px;border-radius:6px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-gold{background:linear-gradient(180deg,var(--gold-hi),var(--gold));color:#17130A}
+.btn-line{border-color:var(--line);color:var(--ink);background:rgba(242,237,226,.04)}
+.btn-line:hover{border-color:var(--gold)}
+
+/* ribbon + header */
+.ribbon{background:var(--gold);color:#17130A;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:center}
+.ribbon .wrap{padding-block:7px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:color-mix(in srgb,var(--night) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand .ring{width:42px;height:42px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-style:italic;font-size:22px;color:var(--gold-hi)}
+.brand b{display:block;font-family:var(--display);font-weight:800;font-size:21px;letter-spacing:.02em;line-height:1}
+.brand small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:3px}
+.top .btn{min-height:44px;padding:0 18px;font-size:15px}
+
+/* hero */
+.hero{padding-block:clamp(36px,6vw,72px) clamp(48px,7vw,84px)}
+.hero .wrap{display:grid;grid-template-columns:1.02fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.hero .copy{min-width:0}
+.open{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.12em;color:var(--go)}
+.open i{width:9px;height:9px;border-radius:50%;background:var(--go);box-shadow:0 0 0 4px rgba(127,212,154,.18)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(42px,6.6vw,78px);line-height:.98;letter-spacing:-.02em;margin:16px 0 0;text-wrap:balance}
+h1 em{font-style:italic;color:var(--gold-hi)}
+.lede{font-size:clamp(17px,1.6vw,19px);color:#D9D2C3;max-width:52ch;margin:20px 0 0}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.facts{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px;color:var(--muted);font-size:15px}
+.facts b{color:var(--ink)}
+.star{color:var(--gold-hi);letter-spacing:2px;margin-right:6px}
+
+.stage{position:relative;min-width:0}
+.stage .photo{border-radius:18px;overflow:hidden;aspect-ratio:4/3.3;max-width:100%;border:1px solid var(--line)}
+.stage .photo img{width:100%;height:100%;object-fit:cover;object-position:30% 50%}
+.board{position:absolute;left:-28px;bottom:-30px;width:min(340px,86%);background:var(--board);border:1px solid #2B271E;border-radius:12px;padding:14px 16px 12px;box-shadow:0 24px 50px rgba(0,0,0,.55);font-family:var(--mono)}
+.board .hd{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.18em;color:var(--muted);border-bottom:1px solid #2B271E;padding-bottom:8px;margin-bottom:8px}
+.board .hd b{color:var(--gold);font-weight:600}
+.row{display:grid;grid-template-columns:92px 1fr;gap:10px;align-items:center;padding:5px 0;font-size:13px}
+.row span{color:var(--muted);letter-spacing:.1em;font-size:11px}
+.flap{display:inline-block;background:#161512;border-radius:4px;padding:3px 7px;color:var(--gold-hi);font-weight:600;letter-spacing:.08em;min-width:0;overflow-wrap:anywhere}
+.flap.late{color:#F2A65A}
+.flap.ok{color:var(--go)}
+.flap.turn{animation:turn .45s ease}
+@keyframes turn{0%{transform:rotateX(0)}50%{transform:rotateX(90deg);opacity:.4}100%{transform:rotateX(0)}}
+.board .ft{margin-top:8px;font-size:10.5px;color:var(--muted);letter-spacing:.06em}
+
+/* identity strip */
+.ident{background:var(--panel);border-block:1px solid var(--line);padding-block:30px}
+.ident .wrap{display:grid;grid-template-columns:auto 1fr;gap:18px 32px;align-items:center}
+.ident h2{font-family:var(--display);font-weight:800;font-style:italic;font-size:clamp(24px,3vw,30px);margin:0;color:var(--gold-hi);line-height:1.1}
+.marks{display:flex;flex-wrap:wrap;gap:10px}
+.mark{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-size:15px;background:rgba(242,237,226,.03)}
+.mark small{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.plate{font-family:var(--mono);font-weight:600;background:#E9C94F;color:#17130A;border-radius:4px;padding:2px 8px;letter-spacing:.06em;font-size:14px}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:36px}
+.svc article{background:var(--night);padding:26px 24px 28px;min-width:0}
+.svc .ic{width:40px;height:40px;color:var(--gold)}
+.svc h3{font-family:var(--display);font-weight:600;font-size:23px;margin:14px 0 6px;line-height:1.15}
+.svc p{margin:0;color:var(--muted);font-size:15.5px}
+.svc .from{display:block;margin-top:12px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--gold)}
+
+/* planner */
+.planner{background:var(--panel);border-block:1px solid var(--line)}
+.plan{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;margin-top:34px;align-items:start}
+.form{display:grid;gap:22px;min-width:0}
+.field label,.field .lab{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:15px;font-weight:600;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:999px;padding:10px 16px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#17130A}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.two > div{min-width:0}
+input[type=text],input[type=date]{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--night);border:1px solid var(--line);border-radius:12px;padding:13px 14px}
+input::placeholder{color:#7D766A}
+.step{display:flex;align-items:center;border:1px solid var(--line);border-radius:12px;overflow:hidden;width:max-content;max-width:100%}
+.step button{font:inherit;font-size:20px;width:48px;height:48px;background:var(--night);color:var(--ink);border:0;cursor:pointer}
+.step output{min-width:64px;text-align:center;font-family:var(--mono);font-weight:600;font-size:17px}
+.ticket{background:var(--night);border:1px solid var(--line);border-radius:16px;padding:22px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 88px);min-width:0}
+.ticket .eyebrow{display:block}
+.ticket pre{white-space:pre-wrap;overflow-wrap:anywhere;font-family:var(--mono);font-size:14px;line-height:1.6;color:#E6DFCF;background:#12110E;border:1px dashed #3A3428;border-radius:10px;padding:16px;margin:14px 0 18px}
+.ticket .btn{width:100%}
+.ticket p{margin:12px 0 0;color:var(--muted);font-size:14px}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:auto auto;gap:14px;margin-top:34px}
+.gal figure{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line);position:relative;min-width:0;background:var(--panel)}
+.gal img{width:100%;height:100%;object-fit:cover}
+.gal figcaption{position:absolute;left:12px;bottom:12px;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;background:rgba(13,12,10,.78);color:var(--ink);padding:6px 10px;border-radius:999px}
+.g1{grid-row:span 2;aspect-ratio:3/4}
+.g2,.g3{aspect-ratio:1/1}
+.g4{grid-column:span 2;aspect-ratio:16/9}
+
+/* reviews */
+.rev{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:34px}
+.rev blockquote{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.rev p{margin:0;font-size:16.5px}
+.rev footer{margin-top:auto;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+.score{display:flex;align-items:baseline;gap:12px;margin-top:14px;flex-wrap:wrap}
+.score b{font-family:var(--display);font-weight:800;font-size:56px;line-height:1;color:var(--gold-hi)}
+.score span{color:var(--muted)}
+
+/* how */
+.how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:34px;counter-reset:s}
+.how li{list-style:none;border-top:2px solid var(--gold);padding-top:18px;min-width:0}
+.how li::before{counter-increment:s;content:"0" counter(s);font-family:var(--mono);font-weight:600;color:var(--gold);font-size:13px;letter-spacing:.12em}
+.how h3{font-family:var(--display);font-weight:600;font-size:23px;margin:8px 0 6px}
+.how p{margin:0;color:var(--muted)}
+ol.how{padding:0}
+
+/* final */
+.final{background:linear-gradient(180deg,var(--gold-hi),var(--gold));color:#17130A;text-align:center}
+.final .h2{color:#17130A}
+.final p{margin:14px auto 0;font-size:18px;max-width:46ch}
+.bignum{display:inline-block;margin-top:20px;font-family:var(--display);font-weight:800;font-size:clamp(40px,8vw,80px);color:#17130A;text-decoration:none;letter-spacing:-.01em}
+.final .row2{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:16px}
+.final .btn{background:#17130A;color:var(--ink)}
+.foot{padding-block:26px 30px;color:var(--muted);font-size:14px}
+.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+.bar{display:none}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .stage{margin-bottom:34px}
+  .board{left:12px}
+  .svc,.rev{grid-template-columns:1fr 1fr}
+  .plan{grid-template-columns:1fr}
+  .ticket{position:static}
+  .ident .wrap{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .svc,.rev,.how{grid-template-columns:1fr}
+  .gal{grid-template-columns:1fr 1fr}
+  .g1{grid-row:auto;grid-column:span 2;aspect-ratio:4/3}
+  .g4{grid-column:span 2}
+  .two{grid-template-columns:1fr}
+  .top .btn span{display:none}
+  .top .btn{width:44px;padding:0}
+  .stage{margin-bottom:0}
+  .board{position:relative;left:auto;right:auto;bottom:auto;width:auto;margin:-56px 12px 0}
+  .bar{display:grid;grid-template-columns:1.3fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));background:color-mix(in srgb,var(--night) 94%,transparent);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+  .bar .btn{min-height:52px;font-size:16px;padding:0 10px}
+  .foot{padding-bottom:110px}
+}
+</style>
+</head>
+<body>
+
+<div class="ribbon"><div class="wrap">Preview made for Mike's Taxi Service</div></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Mike's Taxi Service, back to top">
+      <span class="ring" aria-hidden="true">M</span>
+      <span><b>MIKE'S</b><small>Taxi Service</small></span>
+    </a>
+    <a class="btn btn-gold js-call" href="#book" aria-label="Call Mike">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg>
+      <span>242-535-4978</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="copy">
+        <span class="open"><i></i>OPEN 24 HOURS · NASSAU &amp; PARADISE ISLAND</span>
+        <h1>Land in Nassau. <em>Mike's already waiting.</em></h1>
+        <p class="lede">Private airport pickups, resort transfers and island tours in a clean, late-model SUV. Send your flight before you fly. If it's late, Mike waits.</p>
+        <div class="ctas">
+          <a class="btn btn-gold js-wa" data-msg="Hi Mike, I'd like to book a ride." href="#book">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"></path></svg>
+            Book on WhatsApp
+          </a>
+          <a class="btn btn-line js-call" href="#book">Call 242-535-4978</a>
+        </div>
+        <div class="facts">
+          <span><span class="star">★★★★★</span><b>4.8</b> on Google</span>
+          <span><b>24/7</b> pickups</span>
+          <span>Based by <b>the airport</b></span>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="photo"><img src="img/jet.jpg" width="1269" height="952" alt="Mike's black GMC Yukon parked beside a private jet on the tarmac"></div>
+        <div class="board" aria-label="Example arrival: the flight is delayed and Mike is waiting">
+          <div class="hd"><span>ARRIVALS · NAS</span><b>EXAMPLE</b></div>
+          <div class="row"><span>PASSENGER</span><b class="flap">YOUR NAME</b></div>
+          <div class="row"><span>FLIGHT</span><b class="flap" id="b-status">ON TIME</b></div>
+          <div class="row"><span>DRIVER</span><b class="flap ok" id="b-driver">MIKE · TRACKING</b></div>
+          <div class="ft">Send your flight number. Mike checks it before he leaves.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ident">
+    <div class="wrap">
+      <h2>How to know it's the right Mike's</h2>
+      <div class="marks">
+        <span class="mark"><small>Vehicle</small> Black GMC Yukon</span>
+        <span class="mark"><small>Plate</small> <span class="plate">TN 1522</span></span>
+        <span class="mark"><small>Number</small> 242-535-4978</span>
+        <span class="mark"><small>Base</small> JFK Drive, by the airport</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <span class="eyebrow">Where Mike takes you</span>
+      <h2 class="h2">Airport, resort, and <em>everything in between.</em></h2>
+      <div class="svc">
+        <article>
+          <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 23l14-3 9-11c1.5-1.8 4.5-.6 3.8 1.8L27 20l8 3v3l-9-1-5 7h-3l1-8-11 1z"></path></svg>
+          <h3>Airport pickups</h3>
+          <p>Meets you at arrivals at Lynden Pindling International. He tracks the flight, so a delay doesn't leave you stranded.</p>
+          <span class="from">NAS · ANY TIME, DAY OR NIGHT</span>
+        </article>
+        <article>
+          <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M8 34V12l12-6 12 6v22M14 34v-8h12v8M14 16h3M23 16h3M14 21h3M23 21h3"></path></svg>
+          <h3>Resort transfers</h3>
+          <p>Straight to your hotel on Paradise Island, Cable Beach or downtown, and back to the airport when it's time to fly home.</p>
+          <span class="from">ATLANTIS · BAHA MAR · CABLE BEACH</span>
+        </article>
+        <article>
+          <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 10h4l4 16h16l3-11H12M16 33a2 2 0 1 0 0-.1M28 33a2 2 0 1 0 0-.1"></path></svg>
+          <h3>Stops on the way</h3>
+          <p>Need groceries or drinks before the resort? Mike makes the stop and waits, so you only shop once.</p>
+          <span class="from">ASK WHEN YOU BOOK</span>
+        </article>
+        <article>
+          <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M20 35s-11-9.5-11-18a11 11 0 0 1 22 0c0 8.5-11 18-11 18z"></path><circle cx="20" cy="17" r="4"></circle></svg>
+          <h3>Island tours</h3>
+          <p>History, beaches and where locals eat. Riders say Mike knows the area and what's actually fun.</p>
+          <span class="from">BY THE HOUR OR HALF DAY</span>
+        </article>
+        <article>
+          <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="13" r="5"></circle><circle cx="28" cy="15" r="4"></circle><path d="M4 33c0-6 4.5-10 10-10s10 4 10 10M24 25c1.2-.6 2.6-1 4-1 4.5 0 8 3.3 8 8"></path></svg>
+          <h3>Groups and families</h3>
+          <p>Traveling with a group, kids or extra luggage? Tell Mike how many people and bags and he'll bring the right vehicle.</p>
+          <span class="from">SUV · VAN FOR BIGGER GROUPS</span>
+        </article>
+        <article>
+          <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M20 5l4.3 8.8 9.7 1.4-7 6.8 1.7 9.6L20 27l-8.7 4.6L13 22l-7-6.8 9.7-1.4z"></path></svg>
+          <h3>Nights out</h3>
+          <p>Birthdays, dinners and a safe ride back to the hotel at the end of the night.</p>
+          <span class="from">OPEN 24 HOURS</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="planner" id="book">
+    <div class="wrap">
+      <span class="eyebrow">Book your ride</span>
+      <h2 class="h2">Plan the trip. <em>Send it to Mike.</em></h2>
+      <p class="sub">Fill in what you know. Your message is written for you, and it opens in WhatsApp ready to send.</p>
+      <div class="plan">
+        <div class="form">
+          <div class="field">
+            <span class="lab" id="lab-trip">Trip</span>
+            <div class="chips" role="group" aria-labelledby="lab-trip">
+              <button type="button" class="chip" data-trip="arr" aria-pressed="true">Airport to hotel</button>
+              <button type="button" class="chip" data-trip="dep" aria-pressed="false">Hotel to airport</button>
+              <button type="button" class="chip" data-trip="tour" aria-pressed="false">Island tour</button>
+              <button type="button" class="chip" data-trip="night" aria-pressed="false">Night out</button>
+              <button type="button" class="chip" data-trip="other" aria-pressed="false">Something else</button>
+            </div>
+          </div>
+          <div class="two">
+            <div class="field">
+              <label for="f-date">Date</label>
+              <input type="date" id="f-date">
+            </div>
+            <div class="field">
+              <span class="lab" id="lab-pax">People</span>
+              <div class="step" role="group" aria-labelledby="lab-pax">
+                <button type="button" id="pax-minus" aria-label="One less person">−</button>
+                <output id="pax" aria-live="polite">2</output>
+                <button type="button" id="pax-plus" aria-label="One more person">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="two">
+            <div class="field">
+              <label for="f-flight" id="lab-flight">Flight number</label>
+              <input type="text" id="f-flight" placeholder="e.g. AA 1234">
+            </div>
+            <div class="field">
+              <label for="f-hotel" id="lab-hotel">Hotel or address</label>
+              <input type="text" id="f-hotel" placeholder="e.g. Atlantis, Royal Towers">
+            </div>
+          </div>
+          <div class="field">
+            <span class="lab" id="lab-extra">Add to the trip</span>
+            <div class="chips" role="group" aria-labelledby="lab-extra">
+              <button type="button" class="chip" data-extra="Stop for groceries on the way" aria-pressed="false">Grocery stop</button>
+              <button type="button" class="chip" data-extra="Extra luggage" aria-pressed="false">Extra luggage</button>
+              <button type="button" class="chip" data-extra="Child seat" aria-pressed="false">Child seat</button>
+              <button type="button" class="chip" data-extra="Return trip too" aria-pressed="false">Return trip</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ticket">
+          <span class="eyebrow">Your message to Mike</span>
+          <pre id="msg"></pre>
+          <a class="btn btn-gold" id="send" href="#book">Send on WhatsApp</a>
+          <p>Prefer to talk? Call or text <b>242-535-4978</b>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cars">
+    <div class="wrap">
+      <span class="eyebrow">The ride</span>
+      <h2 class="h2">Clean, late-model, <em>and always on time.</em></h2>
+      <div class="gal">
+        <figure class="g1"><img src="img/night.jpg" width="952" height="1269" alt="The Yukon at night under a resort entrance"><figcaption>Evening pickup</figcaption></figure>
+        <figure class="g2"><img src="img/atlantis.jpg" width="1269" height="952" alt="The Yukon at the Atlantis Royal Towers fountain"><figcaption>Atlantis, Paradise Island</figcaption></figure>
+        <figure class="g3"><img src="img/marina.jpg" width="1092" height="1092" alt="The Yukon parked at the marina beside superyachts"><figcaption>The marina</figcaption></figure>
+        <figure class="g4"><img src="img/fleet.jpg" width="1456" height="819" alt="Mike's Taxi Service vehicles: sedan, minivan, SUV and van"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <span class="eyebrow">What riders say</span>
+      <div class="score"><b>4.8</b><span><span class="star">★★★★★</span> from 19 reviews on Google</span></div>
+      <div class="rev">
+        <blockquote><p>"The cars are new, well kept, clean. The service is early, never late. We will use them 100% of the time we are here!"</p><footer>BETSY S. · GOOGLE</footer></blockquote>
+        <blockquote><p>"Mike waited for another party that was with us and had a delay coming out the terminal. Highly recommend."</p><footer>EDUARDO H. · GOOGLE</footer></blockquote>
+        <blockquote><p>"Best transport service on the island. Mike was extremely professional and always available. Used Mike several times during our trip!"</p><footer>KELSEY D. · GOOGLE</footer></blockquote>
+        <blockquote><p>"Great communication before we arrived. Available via text or email. His car was super clean and he let us pick up groceries."</p><footer>J. FLEM · GOOGLE</footer></blockquote>
+        <blockquote><p>"On our way from the airport he did a couple of stops for us, then got us to our resort. Very pleasant, polite and helpful."</p><footer>GINA M. · GOOGLE</footer></blockquote>
+        <blockquote><p>"He is the only person I recommend to my friends and family anytime they travel to Nassau."</p><footer>LOTUS D. · GOOGLE</footer></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <span class="eyebrow">How it works</span>
+      <h2 class="h2">Three messages and <em>you're sorted.</em></h2>
+      <ol class="how">
+        <li><h3>Send your details</h3><p>Flight number, date, hotel and how many people. The planner above writes it for you.</p></li>
+        <li><h3>Mike confirms</h3><p>You get a reply on WhatsApp with the price and the vehicle, so you know what to look for.</p></li>
+        <li><h3>He's at arrivals</h3><p>Mike watches your flight. Early, on time or late, he's there when you walk out.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2 class="h2">Flying into Nassau?</h2>
+      <p>Book your ride before you land. Call or WhatsApp Mike, any time.</p>
+      <a class="bignum js-call" href="#book">242-535-4978</a>
+      <div class="row2">
+        <a class="btn js-wa" data-msg="Hi Mike, I'd like to book a ride." href="#book">Message on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Mike's Taxi Service · John F Kennedy Dr, Nassau</span>
+    <span>Open 24 hours, 7 days</span>
+  </div>
+</footer>
+
+<div class="bar">
+  <a class="btn btn-gold js-wa" data-msg="Hi Mike, I'd like to book a ride." href="#book">WhatsApp</a>
+  <a class="btn btn-line js-call" href="#book">Call</a>
+</div>
+
+<script>
+var PHONE = "12425354978";
+function wa(msg){ return "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(msg); }
+document.querySelectorAll(".js-call").forEach(function(a){ a.href = "tel:+" + PHONE; });
+document.querySelectorAll(".js-wa").forEach(function(a){ a.href = wa(a.getAttribute("data-msg")); a.target = "_blank"; a.rel = "noopener"; });
+
+/* arrivals board */
+(function(){
+  var st = document.getElementById("b-status"), dr = document.getElementById("b-driver");
+  var seq = [["ON TIME","","MIKE · TRACKING"],["DELAYED 40 MIN","late","MIKE · STILL WAITING"],["LANDED","ok","MIKE · AT ARRIVALS"]];
+  var i = 0;
+  function set(el, txt, cls){ el.classList.remove("turn"); void el.offsetWidth; el.textContent = txt; el.className = "flap " + cls + " turn"; }
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) { st.textContent = seq[1][0]; st.className = "flap late"; dr.textContent = seq[1][2]; return; }
+  setInterval(function(){ i = (i + 1) % seq.length; set(st, seq[i][0], seq[i][1]); set(dr, seq[i][2], "ok"); }, 2800);
+})();
+
+/* trip planner */
+(function(){
+  var trip = "arr", pax = 2, extras = [];
+  var labels = {arr:"a pickup from the airport to my hotel", dep:"a ride from my hotel to the airport", tour:"an island tour", night:"a ride for a night out", other:"a ride"};
+  var date = document.getElementById("f-date"), flight = document.getElementById("f-flight"), hotel = document.getElementById("f-hotel");
+  var out = document.getElementById("msg"), send = document.getElementById("send"), paxEl = document.getElementById("pax");
+  var labFlight = document.getElementById("lab-flight"), labHotel = document.getElementById("lab-hotel");
+  try { var d = new Date(); d.setDate(d.getDate() + 14); date.value = d.toISOString().slice(0,10); } catch(e) {}
+  function fmt(v){ if(!v) return "___"; var p = v.split("-"); var m = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]; return m[+p[1]-1] + " " + (+p[2]) + ", " + p[0]; }
+  function build(){
+    var showFlight = trip === "arr" || trip === "dep";
+    flight.parentElement.hidden = !showFlight;
+    labHotel.textContent = trip === "tour" ? "Pickup from" : trip === "night" ? "Pickup and destination" : "Hotel or address";
+    var L = ["Hi Mike, I'd like to book " + labels[trip] + "."];
+    L.push("");
+    L.push("Date: " + fmt(date.value));
+    if (showFlight) L.push("Flight: " + (flight.value.trim() || "___"));
+    L.push((trip === "night" ? "Pickup / destination: " : trip === "tour" ? "Pickup from: " : "Hotel: ") + (hotel.value.trim() || "___"));
+    L.push("People: " + pax);
+    if (extras.length) L.push("Also: " + extras.join(", "));
+    L.push("");
+    L.push("How much would that be?");
+    var m = L.join("\n");
+    out.textContent = m;
+    send.href = wa(m); send.target = "_blank"; send.rel = "noopener";
+  }
+  document.querySelectorAll("[data-trip]").forEach(function(b){
+    b.addEventListener("click", function(){
+      trip = b.getAttribute("data-trip");
+      document.querySelectorAll("[data-trip]").forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      build();
+    });
+  });
+  document.querySelectorAll("[data-extra]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var v = b.getAttribute("data-extra"), on = b.getAttribute("aria-pressed") !== "true";
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+      extras = extras.filter(function(x){ return x !== v; }); if (on) extras.push(v);
+      build();
+    });
+  });
+  document.getElementById("pax-minus").addEventListener("click", function(){ pax = Math.max(1, pax - 1); paxEl.textContent = pax; build(); });
+  document.getElementById("pax-plus").addEventListener("click", function(){ pax = Math.min(30, pax + 1); paxEl.textContent = pax; build(); });
+  [date, flight, hotel].forEach(function(el){ el.addEventListener("input", build); });
+  build();
+})();
+</script>
+
+</body>
+</html>
